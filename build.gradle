@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.lab1'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(22)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa") // libs to use JPA in your project
+	implementation("com.h2database:h2") // libs to use a H2 database
+	testImplementation group: 'org.junit.platform', name: 'junit-platform-suite-engine', version: '1.11.2'
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.2'
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
