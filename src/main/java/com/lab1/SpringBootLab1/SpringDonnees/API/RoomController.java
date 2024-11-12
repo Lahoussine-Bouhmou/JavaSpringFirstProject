@@ -87,5 +87,7 @@ public class RoomController {
         roomDao.save(entity);
         return ResponseEntity.ok(RoomMapper.mapToRoom(entity));
     }
+
+    // RoomCommand is a record (a simple DTO) for accepting room data in the API requests
     public record RoomCommand(String name, SensorEntity currentTemperature, SensorEntity targetTemperature, int floor) {}
 }
