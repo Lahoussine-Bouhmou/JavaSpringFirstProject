@@ -18,8 +18,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/rooms")
 @Transactional
 public class RoomController {
+
     private final WindowDao windowDao;
     private final RoomDao roomDao;
+
+    // Constructor to initialize the DAOs through dependency injection
     public RoomController(RoomDao roomDao, WindowDao windowDao) {
         this.windowDao = windowDao;
         this.roomDao = roomDao;
